@@ -32,9 +32,9 @@
         };
     }
 
-    LxTabsController.$inject = ['LxUtils', '$element', '$scope', '$timeout'];
+    LxTabsController.$inject = ['LxUtils', '$element', '$scope', '$timeout', '$window'];
 
-    function LxTabsController(LxUtils, $element, $scope, $timeout)
+    function LxTabsController(LxUtils, $element, $scope, $timeout, $window)
     {
         var lxTabs = this;
         var tabsLength;
@@ -42,6 +42,7 @@
         var timer2;
         var timer3;
         var timer4;
+        var tabsUUID = LxUtils.generateUUID();
 
         lxTabs.removeTab = removeTab;
         lxTabs.setActiveTab = setActiveTab;
@@ -56,6 +57,11 @@
         lxTabs.tabs = [];
         lxTabs.theme = angular.isDefined(lxTabs.theme) ? lxTabs.theme : 'light';
         lxTabs.viewMode = angular.isDefined(lxTabs.links) ? 'separate' : 'gather';
+
+        angular.element($window).on('resize.' + tabsUUID, function ()
+        {
+        	setIndicatorPosition();
+        });
 
         $scope.$watch(function()
         {
@@ -100,6 +106,7 @@
 
         $scope.$on('$destroy', function()
         {
+            angular.element($window).off('resize.' + tabsUUID);
             $timeout.cancel(timer1);
             $timeout.cancel(timer2);
             $timeout.cancel(timer3);
