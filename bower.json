@@ -1,5 +1,5 @@
 {
-    "name": "lumx",
+    "name": "lumx_responsiveTabs",
     "description": "The first responsive front-end framework based on AngularJS & Google Material Design specifications",
     "kewords": [
         "AngularJS",
@@ -7,7 +7,7 @@
         "Framework"
     ],
     "homepage": "http://ui.lumapps.com",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "authors": [
         "LumApps"
     ],
