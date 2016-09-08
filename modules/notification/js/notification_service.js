@@ -314,7 +314,7 @@
             });
 
             var dialogHeader = buildDialogHeader(_title);
-            var dialogContent =  ! contentAsHtml ? buildDialogContent(_text);
+            var dialogContent =  ! contentAsHtml ? buildDialogContent(_text)
             									 : buildDialogContentHtml(_text);
             var dialogActions = buildDialogActions(
             {
@@ -358,7 +358,7 @@
             });
 
             var dialogHeader = buildDialogHeader(_title);
-            var dialogContent =  ! contentAsHtml ? buildDialogContent(_text);
+            var dialogContent =  ! contentAsHtml ? buildDialogContent(_text)
             									 : buildDialogContentHtml(_text);
             var dialogActions = buildDialogActions(_buttons, _callback, _unbind);
 

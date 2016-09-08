@@ -2182,6 +2182,17 @@
             return dialogContent;
         }
 
+        function buildDialogContentHtml(_text)
+        {
+            var dialogContent = angular.element('<div/>',
+            {
+                class: 'dialog__content p++ pt0 tc-black-2',
+                html: _text
+            });
+
+            return dialogContent;
+        }
+
         function buildDialogHeader(_title)
         {
             var dialogHeader = angular.element('<div/>',
@@ -2214,7 +2225,7 @@
             }, 600);
         }
 
-        function showAlertDialog(_title, _text, _button, _callback, _unbind)
+        function showAlertDialog(_title, _text, _button, _callback, _unbind, contentAsHtml)
         {
             LxDepthService.register();
 
@@ -2229,7 +2240,8 @@
             });
 
             var dialogHeader = buildDialogHeader(_title);
-            var dialogContent = buildDialogContent(_text);
+            var dialogContent =  ! contentAsHtml ? buildDialogContent(_text)
+            									 : buildDialogContentHtml(_text);
             var dialogActions = buildDialogActions(
             {
                 ok: _button
@@ -2257,7 +2269,7 @@
             }, 100);
         }
 
-        function showConfirmDialog(_title, _text, _buttons, _callback, _unbind)
+        function showConfirmDialog(_title, _text, _buttons, _callback, _unbind, contentAsHtml)
         {
             LxDepthService.register();
 
@@ -2272,7 +2284,8 @@
             });
 
             var dialogHeader = buildDialogHeader(_title);
-            var dialogContent = buildDialogContent(_text);
+            var dialogContent =  ! contentAsHtml ? buildDialogContent(_text)
+            									 : buildDialogContentHtml(_text);
             var dialogActions = buildDialogActions(_buttons, _callback, _unbind);
 
             dialogFilter
@@ -2298,6 +2311,7 @@
         }
     }
 })();
+
 (function()
 {
     'use strict';
