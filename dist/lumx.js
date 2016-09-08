@@ -1949,6 +1949,7 @@
         service.notify = notify;
         service.success = notifySuccess;
         service.warning = notifyWarning;
+        service.closeDialog = closeDialog;
 
         ////////////
 
