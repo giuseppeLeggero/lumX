@@ -2223,11 +2223,14 @@
             {
                 dialogFilter.remove();
                 dialog.remove();
+                dialogFilter = undefined;
             }, 600);
         }
 
         function showAlertDialog(_title, _text, _button, _callback, _unbind, contentAsHtml)
         {
+            if (!! dialogFilter ) return;
+
             LxDepthService.register();
 
             dialogFilter = angular.element('<div/>',
@@ -2272,6 +2275,8 @@
 
         function showConfirmDialog(_title, _text, _buttons, _callback, _unbind, contentAsHtml)
         {
+            if (!! dialogFilter ) return;
+
             LxDepthService.register();
 
             dialogFilter = angular.element('<div/>',
